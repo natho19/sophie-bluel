@@ -23,7 +23,8 @@ function displayWork(work) {
 
     // image
     const image = new Image();
-    image.src = work.imageUrl;
+    image.src = 'assets/images/work.png';
+    // image.src = work.imageUrl;
     image.alt = work.title;
 
     // figcaption
