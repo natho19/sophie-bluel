@@ -23,9 +23,9 @@ function displayWork(work) {
 
     // image
     const image = new Image();
-    image.src = 'assets/images/work.png';
-    // image.src = work.imageUrl;
+    image.src = work.imageUrl;
     image.alt = work.title;
+    image.crossOrigin = 'anonymous';
 
     // figcaption
     const figcaption = document.createElement('figcaption');
