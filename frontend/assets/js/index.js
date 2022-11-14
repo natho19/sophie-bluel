@@ -1,13 +1,29 @@
 'use strict';
 
+const filtersEl = document.querySelectorAll('.filter');
+const galleryEl = document.querySelector('.gallery');
+
 loadConfig().then(config => {
     fetch(config.host + 'api/works')
         .then(data => data.json())
         .then(jsonWorks => {
-            for (let jsonWork of jsonWorks) {
-                let work = new Work(jsonWork);
-                displayWork(work);
-            }
+            var worksSet = new Set(jsonWorks);
+            console.log(worksSet);
+            filtersEl.forEach((element, index) => {
+                element.addEventListener('click', function () {
+                    console.log('Je clique sur le filtre');
+                    galleryEl.textContent = '';
+                    for (let jsonWork of worksSet) {
+                        const work = new Work(jsonWork);
+                        const categoryId = work.categoryId;
+                        if (categoryId === index) {
+                            // console.log(index);
+                            // console.log(work);
+                            displayWork(work);
+                        }
+                    }
+                });
+            });
         })
         .catch(error => {
             console.log(error);
@@ -15,9 +31,6 @@ loadConfig().then(config => {
 });
 
 function displayWork(work) {
-    // Gallery element
-    const galleryEl = document.querySelector('.gallery');
-
     // figure
     const figure = document.createElement('figure');
 

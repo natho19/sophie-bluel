@@ -1,7 +1,7 @@
 'use strict';
 
 class Work {
-    constructor (jsonWork) {
+    constructor(jsonWork) {
         jsonWork && Object.assign(this, jsonWork);
     }
 }
