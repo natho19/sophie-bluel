@@ -8,17 +8,27 @@ loadConfig().then(config => {
         .then(data => data.json())
         .then(jsonWorks => {
             var worksSet = new Set(jsonWorks);
-            console.log(worksSet);
+
+            for (let jsonWork of worksSet) {
+                const work = new Work(jsonWork);
+                displayWork(work);
+            }
+
             filtersEl.forEach((element, index) => {
                 element.addEventListener('click', function () {
-                    console.log('Je clique sur le filtre');
+                    const filterElActive = document.querySelector('.active');
+                    filterElActive.classList.remove('active');
+                    element.classList.add('active');
+
                     galleryEl.textContent = '';
+
                     for (let jsonWork of worksSet) {
                         const work = new Work(jsonWork);
                         const categoryId = work.categoryId;
                         if (categoryId === index) {
-                            // console.log(index);
-                            // console.log(work);
+                            displayWork(work);
+                        }
+                        if (index === 0) {
                             displayWork(work);
                         }
                     }
