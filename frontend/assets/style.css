@@ -338,16 +338,28 @@ footer nav ul {
     margin-right: 0;
 }
 
-/** Login form **/
+/** Section form **/
 
-.login-form {
+.section-form {
     margin-top: 180px !important;
     margin-bottom: 180px !important;
 }
 
-.login-form a {
+.section-form a {
     text-align: center;
     text-decoration: underline;
 }
 
-/** End login form **/
+.section-form .error {
+    padding: 20px 15px;
+    background-color: #feecf0;
+    color: #cc0f35;
+    font-weight: 600;
+    margin-top: 40px;
+}
+
+#login-form {
+    margin-top: 10px !important;
+}
+
+/** End section form **/
