@@ -27,12 +27,12 @@ function postLoginForm(user) {
             },
             body: JSON.stringify(user),
         })
-            .then(data => data.json())
             .then(response => {
-                if (response.message === 'user not found') {
-                    displayError();
-                } else {
-                }
+                if (!response.ok) displayError();
+                return response.json();
+            })
+            .then(data => {
+                if (data.token) connecting(data.token);
             })
             .catch(error => {
                 throw new Error(error);
@@ -49,4 +49,10 @@ function displayError() {
 
     if (errorEl === null) loginFormEl.parentNode.insertBefore(error, loginFormEl);
     emailInput.focus();
+}
+
+function connecting(token) {
+    const url = window.location.origin + '/index.html';
+    window.location.replace(url);
+    localStorage.setItem('token', token);
 }
