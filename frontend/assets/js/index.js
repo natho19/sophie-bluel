@@ -6,37 +6,37 @@ const galleryEl = document.querySelector('.gallery');
 loadConfig().then(config => {
     fetch(config.host + 'api/works')
         .then(data => data.json())
-        .then(jsonWorks => {
-            var worksSet = new Set(jsonWorks);
+        .then(works => {
+            const worksSet = new Set(works);
 
-            for (let jsonWork of worksSet) {
-                const work = new Work(jsonWork);
+            // Affichage de tous les travaux par défaut
+            for (const work of worksSet) {
                 displayWork(work);
             }
 
             filtersEl.forEach((element, index) => {
                 element.addEventListener('click', function () {
+                    // Suppression et ajout de la classe active
                     const filterElActive = document.querySelector('.active');
                     filterElActive.classList.remove('active');
                     element.classList.add('active');
 
+                    // Suppression des travaux
                     galleryEl.textContent = '';
 
-                    for (let jsonWork of worksSet) {
-                        const work = new Work(jsonWork);
+                    // Affichage des travaux
+                    for (const work of worksSet) {
                         const categoryId = work.categoryId;
-                        if (categoryId === index) {
-                            displayWork(work);
-                        }
-                        if (index === 0) {
-                            displayWork(work);
-                        }
+                        // Par défaut (Tous)
+                        if (index === 0) displayWork(work);
+                        // En fonction du filtre (Objets, Appartements, Hôtels & restaurants)
+                        if (index === categoryId) displayWork(work);
                     }
                 });
             });
         })
         .catch(error => {
-            console.log(error);
+            throw new Error(error);
         });
 });
 
@@ -54,6 +54,7 @@ function displayWork(work) {
     const figcaption = document.createElement('figcaption');
     figcaption.textContent = work.title;
 
+    // Ajout de la figure
     figure.appendChild(image);
     figure.appendChild(figcaption);
     galleryEl.appendChild(figure);
