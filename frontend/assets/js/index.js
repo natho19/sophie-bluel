@@ -40,6 +40,7 @@ loadConfig().then(config => {
         });
 });
 
+// Affiche un travail
 function displayWork(work) {
     // figure
     const figure = document.createElement('figure');
