@@ -1,7 +1,5 @@
 'use strict';
 
-let connecting = false;
-
 const headerEl = document.querySelector('header');
 const imgEl = document.querySelector('figure img');
 const introductionTitleEl = document.querySelector('#introduction h2');
@@ -9,9 +7,7 @@ const portfolioTitleEl = document.querySelector('#portfolio h2');
 const logoutLink = document.querySelector('[href="login.html"]');
 
 // Si le token est présent, l'utilisateur est connecté
-if (localStorage.getItem('token')) connecting = true;
-
-if (connecting) {
+if (isConnected()) {
     // Création du header-top
     const headerTopEl = document.createElement('div');
     headerTopEl.classList.add('header-top');
@@ -35,7 +31,6 @@ if (connecting) {
     // Au clic du lien logout, déconnecter l'utilisateur
     logoutLink.addEventListener('click', event => {
         event.preventDefault();
-        
         // Supprimer le token et rafraîchir la page
         localStorage.removeItem('token');
         window.location.reload();
