@@ -51,11 +51,11 @@ function displayError() {
 
     const error = document.createElement('div');
     error.classList.add('error');
-    error.innerHTML = `&#10006; Erreur dans l'identifiant ou le mot de passe`;
+    error.innerHTML = `&times; Erreur dans l'identifiant ou le mot de passe`;
 
     // Si la div error n'existe pas encore
     if (errorEl === null) loginFormEl.parentNode.insertBefore(error, loginFormEl);
-    
+
     // Remettre le focus sur l'input de l'email
     emailInput.focus();
 }
