@@ -1,28 +1,35 @@
 'use strict';
 
-const connecting = localStorage.getItem('token');
+let connecting = false;
 
 const headerEl = document.querySelector('header');
 const imgEl = document.querySelector('figure img');
-const h2El = document.querySelector('article h2');
-console.log(h2El);
+const introductionTitleEl = document.querySelector('#introduction h2');
+const portfolioTitleEl = document.querySelector('#portfolio h2');
+const logoutLink = document.querySelector('[href="login.html"]');
 
-const headerTopEl = document.createElement('div');
-headerTopEl.classList.add('header-top');
-headerTopEl.innerHTML = `<button class="edit"><img src="./assets/icons/edit-white.png" alt="edit-black"> Mode édition</button>
-<button class="publish">publier les changements</button>`;
-
-const editButtonEl = document.createElement('button');
-editButtonEl.classList.add('edit');
-editButtonEl.innerHTML = `<img src="./assets/icons/edit-black.png" alt="edit-black"> modifier`;
+if (localStorage.getItem('token')) connecting = true;
 
 if (connecting) {
+    const headerTopEl = document.createElement('div');
+    headerTopEl.classList.add('header-top');
+    headerTopEl.innerHTML = `<button class="edition"><img src="./assets/icons/edit-white.png" alt="edit-black"> Mode édition</button><button class="publish">publier les changements</button>`;
+
+    const editButtonEl = document.createElement('button');
+    editButtonEl.classList.add('edit');
+    editButtonEl.innerHTML = `<img src="./assets/icons/edit-black.png" alt="edit-black"> modifier`;
+
     headerEl.parentNode.insertBefore(headerTopEl, headerEl);
-
-    // Insert before : element.parentNode.insertBefore(newElement, element);
-    // Insert after : element.parentNode.insertBefore(newElement, element.nextSibling);
-
-    //BUG : Je n'arrive pas à utiliser insertBefore plusieurs fois avec la même variable. Seul le dernier s'affiche
     imgEl.parentNode.insertBefore(editButtonEl, imgEl.nextSibling);
-    h2El.parentNode.insertBefore(editButtonEl, h2El);
+    introductionTitleEl.parentNode.insertBefore(editButtonEl.cloneNode(true), introductionTitleEl);
+    portfolioTitleEl.parentNode.insertBefore(editButtonEl.cloneNode(true), portfolioTitleEl.nextSibling);
+
+    logoutLink.textContent = 'logout';
+    logoutLink.setAttribute('href', '#');
+
+    logoutLink.addEventListener('click', event => {
+        event.preventDefault();
+        localStorage.removeItem('token');
+        window.location.reload();
+    });
 }
