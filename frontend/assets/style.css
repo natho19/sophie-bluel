@@ -394,6 +394,8 @@ footer nav ul {
     background-color: #000000;
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 2;
 }
 
 .header-top .edition {
@@ -431,3 +433,61 @@ footer nav ul {
 }
 
 /** End header top  **/
+
+/** Modal **/
+
+html {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.show-modal {
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 1.75rem 3.5rem;
+    margin: 5rem 2rem;
+    border: none;
+    background-color: #fff;
+    color: #444;
+    border-radius: 10rem;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal {
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    background-color: #ffffff;
+    padding: 80px 100px;
+    border-radius: 10px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.close-modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 30px;
+    color: #000000;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+/** End modal **/
