@@ -291,7 +291,8 @@ figure .edit {
     flex-direction: column;
 }
 
-#contact input {
+#contact input,
+.modal input {
     height: 50px;
     font-size: 1.2em;
     border: none;
@@ -456,7 +457,7 @@ html {
 
 .modal {
     position: absolute;
-    top: 24%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 45%;
@@ -476,6 +477,66 @@ html {
     cursor: pointer;
     border: none;
     background: none;
+}
+
+.modal h2 {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+.modal-gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 30px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #b3b3b3;
+}
+
+.modal-gallery figure {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.modal-gallery figure > img {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.modal-gallery .delete {
+    position: absolute;
+    top: 6px;
+    right: 2px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.modal-gallery .delete img {
+    width: 18px;
+}
+
+.modal input[type='submit'] {
+    margin-top: 40px;
+    margin-bottom: 25px;
+    display: block;
+    width: 240px;
+}
+
+.delete-all {
+    font-family: 'Syne';
+    display: block;
+    width: 160px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #d65353;
 }
 
 /** End modal **/
