@@ -1,4 +1,4 @@
 # Ignore all HTML files:
 frontend/index.html
 frontend/login.html
-frontend/assets/js/connect.js
+frontend/assets/js/connexion.js
