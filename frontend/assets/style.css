@@ -153,7 +153,8 @@ body {
 header {
     display: flex;
     justify-content: space-between;
-    margin: 50px 0;
+    margin-bottom: 50px;
+    padding-top: 88px;
 }
 
 section {
@@ -395,8 +396,10 @@ footer nav ul {
     background-color: #000000;
     display: flex;
     justify-content: center;
-    position: relative;
+    position: fixed;
     z-index: 2;
+    width: 100%;
+    max-width: 1140px;
 }
 
 .header-top .edition {
