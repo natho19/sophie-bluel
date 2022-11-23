@@ -41,10 +41,11 @@ loadConfig().then(config => {
         });
 });
 
-// Affiche un travail
+// Affiche un travail sur la page d'accueil
 function displayWork(work) {
     // figure
     const figure = document.createElement('figure');
+    figure.setAttribute('data-id', work.id);
 
     // image
     const image = new Image();

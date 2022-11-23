@@ -13,11 +13,12 @@ function openModal() {
 
     const btnsDelete = document.querySelectorAll('.delete');
 
+    // Au clic du bouton supprimer, récupérer l'id du projet à supprimer
     for (let i = 0; i < btnsDelete.length; i++) {
-        const element = btnsDelete[i].parentElement;
-        const id = Number(element.getAttribute('data-id'));
+        const id = Number(btnsDelete[i].parentElement.getAttribute('data-id'));
         btnsDelete[i].addEventListener('click', function () {
-            deleteWork(element, id);
+            // Après confirmation, supprimer le projet
+            if (window.confirm('Voulez-vous vraiment supprimer ce projet ?')) deleteWork(id);
         });
     }
 }
@@ -37,9 +38,9 @@ document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
 });
 
-function deleteWork(element, id) {
-    console.log('Identifiant à supprimer : ', id);
-    console.log('Elément à supprimer : ', element);
+function deleteWork(id) {
+    // Récupérer tous les projets du DOM à supprimer (sur la page d'accueil et dans la modale)
+    const elements = document.querySelectorAll(`[data-id="${id}"]`);
 
     loadConfig().then(config => {
         fetch(config.host + 'api/works/' + id, {
@@ -50,7 +51,13 @@ function deleteWork(element, id) {
             },
         })
             .then(response => {
-                if (response.ok) element.remove();
+                // Après confirmation de la suppression en base de données
+                if (response.ok) {
+                    // Supprimer les éléments du DOM
+                    elements.forEach(element => {
+                        element.remove();
+                    });
+                }
             })
             .catch(error => {
                 throw new Error(error);
