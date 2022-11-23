@@ -1,7 +1,11 @@
 'use strict';
 
+function getToken() {
+    return localStorage.getItem('token');
+}
+
 // Vérifie si l'utilisateur est connecté ou non
 function isConnected() {
-    const connecting = localStorage.getItem('token') ? true : false;
+    const connecting = getToken() ? true : false;
     return connecting;
 }

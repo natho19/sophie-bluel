@@ -64,7 +64,6 @@ function displayWork(work) {
 
 // Affiche un travail dans la galerie
 function displayGalleryWork(work) {
-    console.log(work);
     galleryModal.innerHTML += `
     <figure data-id="${work.id}">
         <img src="${work.imageUrl}" alt="${work.title}" crossorigin="anonymous">
