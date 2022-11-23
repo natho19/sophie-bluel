@@ -12,6 +12,7 @@ loadConfig().then(config => {
             // Affichage de tous les travaux par défaut
             for (const work of worksSet) {
                 displayWork(work);
+                displayGalleryWork(work);
             }
 
             filtersEl.forEach((element, index) => {
@@ -59,4 +60,15 @@ function displayWork(work) {
     figure.appendChild(image);
     figure.appendChild(figcaption);
     galleryEl.appendChild(figure);
+}
+
+// Affiche un travail dans la galerie
+function displayGalleryWork(work) {
+    console.log(work);
+    galleryModal.innerHTML += `
+    <figure data-id="${work.id}">
+        <img src="${work.imageUrl}" alt="${work.title}" crossorigin="anonymous">
+        <a href="#">éditer</a>
+        <button class="delete"><img src="./assets/icons/trash.png" alt="trash"></button>
+    </figure>`;
 }

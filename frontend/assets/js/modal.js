@@ -1,6 +1,7 @@
 'use strict';
 
 const modal = document.querySelector('.modal');
+const galleryModal = document.querySelector('.modal-gallery');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
 const btnOpenModal = document.querySelector('#portfolio .edit');
