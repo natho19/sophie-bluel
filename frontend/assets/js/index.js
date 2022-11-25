@@ -2,6 +2,7 @@
 
 const filtersEl = document.querySelectorAll('.filter');
 const galleryEl = document.querySelector('.gallery');
+const projectsListEl = document.querySelector('.projects-list');
 
 loadConfig().then(config => {
     fetch(config.host + 'api/works')
@@ -65,7 +66,7 @@ function displayWork(work) {
 
 // Affiche un travail dans la galerie
 function displayGalleryWork(work) {
-    galleryModal.innerHTML += `
+    projectsListEl.innerHTML += `
     <figure data-id="${work.id}">
         <img src="${work.imageUrl}" alt="${work.title}" crossorigin="anonymous">
         <a href="#">éditer</a>

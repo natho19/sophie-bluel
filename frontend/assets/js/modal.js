@@ -1,14 +1,20 @@
 'use strict';
 
-const modal = document.querySelector('.modal');
-const galleryModal = document.querySelector('.modal-gallery');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.close-modal');
-const btnOpenModal = document.querySelector('#portfolio .edit');
+// Modale galerie
+const galleryModal = document.querySelector('#modal-gallery');
+const btnOpenGalleryModal = document.querySelector('#portfolio .edit');
+const btnCloseGalleryModal = document.querySelector('#close-modal-gallery');
 
-// Ouverture de la modale
-function openModal() {
-    modal.classList.remove('hidden');
+// Modale projet
+const projectModal = document.querySelector('#modal-add-project');
+const btnOpenProjectModal = document.querySelector('#add-project');
+const btnCloseProjectModal = document.querySelector('#close-modal-add-project');
+
+const overlay = document.querySelector('.overlay');
+
+// Ouverture de la modale galerie
+function openGalleryModal() {
+    galleryModal.classList.remove('hidden');
     overlay.classList.remove('hidden');
 
     const btnsDelete = document.querySelectorAll('.delete');
@@ -23,21 +29,29 @@ function openModal() {
     }
 }
 
-// Fermeture de la modale
-function closeModal() {
-    modal.classList.add('hidden');
+// Ouverture de la modale projet
+function openProjectModal() {
+    projectModal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+}
+
+// Fermeture de la modale galerie
+function closeGalleryModal() {
+    galleryModal.classList.add('hidden');
     overlay.classList.add('hidden');
 }
 
-if (btnOpenModal) btnOpenModal.addEventListener('click', openModal);
-btnCloseModal.addEventListener('click', closeModal);
+// Fermeture de la modale projet
+function closeProjectModal() {
+    projectModal.classList.add('hidden');
+}
 
-// Fermeture de la modale quand on clique sur l'overlay et sur la touche Escape
-overlay.addEventListener('click', closeModal);
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-});
+function closeAllModal() {
+    if (!projectModal.classList.contains('hidden')) closeProjectModal();
+    if (!galleryModal.classList.contains('hidden')) closeGalleryModal();
+}
 
+// Supprimer un projet
 function deleteWork(id) {
     // Récupérer tous les projets du DOM à supprimer (sur la page d'accueil et dans la modale)
     const elements = document.querySelectorAll(`[data-id="${id}"]`);
@@ -64,3 +78,21 @@ function deleteWork(id) {
             });
     });
 }
+
+// Ouvrir les modales
+if (btnOpenGalleryModal) btnOpenGalleryModal.addEventListener('click', openGalleryModal);
+if (btnOpenProjectModal) btnOpenProjectModal.addEventListener('click', openProjectModal);
+
+// Fermer les modales
+btnCloseGalleryModal.addEventListener('click', closeGalleryModal);
+btnCloseProjectModal.addEventListener('click', closeProjectModal);
+
+// Au clic de l'overlay, fermer toutes les modales
+overlay.addEventListener('click', closeAllModal);
+
+// Esc pour fermer toutes les modales
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closeAllModal();
+    }
+});

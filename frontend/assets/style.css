@@ -468,7 +468,14 @@ html {
     padding: 80px 100px;
     border-radius: 10px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+}
+
+#modal-gallery {
     z-index: 2;
+}
+
+#modal-add-project {
+    z-index: 3;
 }
 
 .close-modal {
@@ -492,7 +499,7 @@ html {
     margin-bottom: 40px;
 }
 
-.modal-gallery {
+.projects-list {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -502,18 +509,18 @@ html {
     border-bottom: 1px solid #b3b3b3;
 }
 
-.modal-gallery figure {
+.projects-list figure {
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.modal-gallery figure > img {
+.projects-list figure > img {
     width: 100%;
     margin-bottom: 5px;
 }
 
-.modal-gallery .delete {
+.projects-list .delete {
     position: absolute;
     top: 6px;
     right: 2px;
@@ -522,7 +529,7 @@ html {
     background: none;
 }
 
-.modal-gallery .delete img {
+.projects-list .delete img {
     width: 18px;
 }
 
