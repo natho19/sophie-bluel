@@ -468,25 +468,25 @@ html {
     padding: 80px 100px;
     border-radius: 10px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-}
-
-#modal-gallery {
     z-index: 2;
 }
 
-#modal-add-project {
-    z-index: 3;
-}
-
-.close-modal {
+.modal button {
     position: absolute;
     top: 25px;
-    right: 25px;
     font-size: 30px;
     color: #000000;
     cursor: pointer;
     border: none;
     background: none;
+}
+
+.arrow-left {
+    left: 25px;
+}
+
+.close-modal {
+    right: 25px;
 }
 
 .modal h2 {

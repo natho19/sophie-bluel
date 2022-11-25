@@ -11,6 +11,7 @@ const btnOpenProjectModal = document.querySelector('#add-project');
 const btnCloseProjectModal = document.querySelector('#close-modal-add-project');
 
 const overlay = document.querySelector('.overlay');
+const btnArrowLeft = document.querySelector('.arrow-left');
 
 // Ouverture de la modale galerie
 function openGalleryModal() {
@@ -38,15 +39,16 @@ function openProjectModal() {
 // Fermeture de la modale galerie
 function closeGalleryModal() {
     galleryModal.classList.add('hidden');
-    overlay.classList.add('hidden');
+    if (!overlay.classList.contains('hidden')) overlay.classList.add('hidden');
 }
 
 // Fermeture de la modale projet
 function closeProjectModal() {
     projectModal.classList.add('hidden');
+    if (!overlay.classList.contains('hidden')) overlay.classList.add('hidden');
 }
 
-function closeAllModal() {
+function closeAllModals() {
     if (!projectModal.classList.contains('hidden')) closeProjectModal();
     if (!galleryModal.classList.contains('hidden')) closeGalleryModal();
 }
@@ -81,18 +83,27 @@ function deleteWork(id) {
 
 // Ouvrir les modales
 if (btnOpenGalleryModal) btnOpenGalleryModal.addEventListener('click', openGalleryModal);
-if (btnOpenProjectModal) btnOpenProjectModal.addEventListener('click', openProjectModal);
+if (btnOpenProjectModal)
+    btnOpenProjectModal.addEventListener('click', function () {
+        closeGalleryModal();
+        openProjectModal();
+    });
 
 // Fermer les modales
 btnCloseGalleryModal.addEventListener('click', closeGalleryModal);
 btnCloseProjectModal.addEventListener('click', closeProjectModal);
 
+btnArrowLeft.addEventListener('click', function () {
+    closeProjectModal();
+    openGalleryModal();
+});
+
 // Au clic de l'overlay, fermer toutes les modales
-overlay.addEventListener('click', closeAllModal);
+overlay.addEventListener('click', closeAllModals);
 
 // Esc pour fermer toutes les modales
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
-        closeAllModal();
+        closeAllModals();
     }
 });
