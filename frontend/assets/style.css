@@ -397,7 +397,7 @@ footer nav ul {
     display: flex;
     justify-content: center;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
     max-width: 1140px;
 }
@@ -465,7 +465,7 @@ html {
     transform: translate(-50%, -50%);
     width: 45%;
     background-color: #ffffff;
-    padding: 80px 100px;
+    padding: 60px 105px;
     border-radius: 10px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 2;
@@ -547,6 +547,34 @@ html {
     margin: 0 auto;
     font-size: 14px;
     color: #d65353;
+}
+
+#add-project-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.upload {
+    text-align: center;
+    background-color: #e8f1f7;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+.upload-icon {
+    margin: 10px 0 20px 0;
+}
+
+.upload-file-label,
+.upload-info {
+    display: block;
+}
+
+.upload-file-label {
+    color: #306685;
+    padding: 10px 35px;
+    background-color: #cbd6dc;
+    border-radius: 50px;
 }
 
 /** End modal **/

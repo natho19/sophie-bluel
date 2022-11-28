@@ -79,10 +79,29 @@
             <a href="#" class="delete-all">Supprimer la galerie</a>
         </div>
 
-        <div id="modal-add-project" class="modal hidden">
+        <div id="modal-add-project" class="modal">
             <button class="arrow-left">&larr;</button>
             <button id="close-modal-add-project" class="close-modal">&times;</button>
             <h2>Ajout photo</h2>
+            <form id="add-project-form" action="#" method="post" enctype="multipart/form-data">
+                <div class="upload">
+                    <img class="upload-icon" src="./assets/icons/upload.png" alt="upload">
+                    <label for="image" class="upload-file-label">&plus; Ajouter photo</label>
+                    <input class="upload-file" type="file" name="image" id="image" accept=".png, .jpg, .jpeg" hidden>
+                    <span class="upload-info">jpg, png : 4mo max</span>
+                </div>
+                
+                <label for="title">Nom</label>
+                <input type="text" name="title" id="title">
+
+                <label for="category">Catégorie</label>
+                <select name="category" id="category">
+                    <option value=""></option>
+                    <option value="1">Objets</option>
+                    <option value="2">Appartements</option>
+                    <option value="3">Hotels & restaurants</option>
+                </select>
+            </form>
         </div>
 
         <div class="overlay hidden"></div>
