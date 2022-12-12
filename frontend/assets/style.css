@@ -210,6 +210,7 @@ li:hover {
 }
 
 #introduction {
+    margin: 50px 0;
     display: flex;
     align-items: center;
 }
@@ -589,8 +590,7 @@ html {
 }
 
 .modal select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none;
     background: transparent;
     background-image: url('./icons/arrow-bottom.png');
     background-repeat: no-repeat;
