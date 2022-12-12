@@ -79,8 +79,10 @@
             <a href="#" class="delete-all">Supprimer la galerie</a>
         </div>
 
-        <div id="modal-add-project" class="modal">
-            <button class="arrow-left">&larr;</button>
+        <div id="modal-add-project" class="modal hidden">
+            <button class="arrow-left">
+                <img src="./assets/icons/arrow-left.png" alt="arrow-left">
+            </button>
             <button id="close-modal-add-project" class="close-modal">&times;</button>
             <h2>Ajout photo</h2>
             <form id="add-project-form" action="#" method="post" enctype="multipart/form-data">
@@ -91,8 +93,9 @@
                     <span class="upload-info">jpg, png : 4mo max</span>
                 </div>
                 
-                <label for="title">Nom</label>
+                <label for="title">Titre</label>
                 <input type="text" name="title" id="title">
+
 
                 <label for="category">Catégorie</label>
                 <select name="category" id="category">
@@ -101,6 +104,10 @@
                     <option value="2">Appartements</option>
                     <option value="3">Hotels & restaurants</option>
                 </select>
+
+                <div class="add-project-button">
+                    <input id="submit-add-project-form" type="submit" value="Valider" disabled>
+                </div>
             </form>
         </div>
 

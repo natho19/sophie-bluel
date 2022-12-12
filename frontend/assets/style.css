@@ -293,14 +293,17 @@ figure .edit {
 }
 
 #contact input,
-.modal input {
+.modal input,
+.modal select {
     height: 50px;
     font-size: 1.2em;
     border: none;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    font-family: 'Work Sans';
 }
 
-#contact label {
+#contact label,
+.modal label {
     margin: 2em 0 1em 0;
 }
 
@@ -460,10 +463,10 @@ html {
 
 .modal {
     position: absolute;
-    top: 29%;
+    top: 980px;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 45%;
+    width: 650px;
     background-color: #ffffff;
     padding: 60px 105px;
     border-radius: 10px;
@@ -563,6 +566,7 @@ html {
 
 .upload-icon {
     margin: 10px 0 20px 0;
+    width: 60px;
 }
 
 .upload-file-label,
@@ -575,6 +579,33 @@ html {
     padding: 10px 35px;
     background-color: #cbd6dc;
     border-radius: 50px;
+    width: 200px;
+    margin: 0 auto 10px !important;
+    cursor: pointer;
+}
+
+.upload-info {
+    font-size: 10px;
+}
+
+.modal select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url('./icons/arrow-bottom.png');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 22px);
+    background-position-y: 50%;
+}
+
+.add-project-button {
+    border-top: 1px solid #b3b3b3;
+    margin-top: 50px;
+}
+
+#submit-add-project-form:disabled {
+    background-color: #a7a7a7;
+    pointer-events: none;
 }
 
 /** End modal **/
