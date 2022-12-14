@@ -563,6 +563,8 @@ html {
     background-color: #e8f1f7;
     border-radius: 3px;
     padding: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
 .upload-icon {
@@ -606,6 +608,18 @@ html {
 #submit-add-project-form:disabled {
     background-color: #a7a7a7;
     pointer-events: none;
+}
+
+#upload-content {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 70px);
+}
+
+#upload-content img {
+    width: 140px;
+    height: 175px;
+    object-fit: cover;
 }
 
 /** End modal **/

@@ -13,6 +13,10 @@ const btnCloseProjectModal = document.querySelector('#close-modal-add-project');
 const overlay = document.querySelector('.overlay');
 const btnArrowLeft = document.querySelector('.arrow-left');
 
+const uploadImageInput = document.querySelector('.upload-file');
+const uploadContent = document.querySelector('#upload-content');
+const uploadGroup = document.querySelector('#upload-group');
+
 // Ouverture de la modale galerie
 function openGalleryModal() {
     galleryModal.classList.remove('hidden');
@@ -81,6 +85,24 @@ function deleteWork(id) {
     });
 }
 
+// Uploader une image
+function uploadImage() {
+    if (uploadImageInput.files && uploadImageInput.files[0]) {
+        const reader = new FileReader(); // Pour lire le fichier sélectionné
+        const image = new Image();
+        const fileName = uploadImageInput.files[0].name;
+
+        reader.onload = e => {
+            image.src = e.target.result; // Ajoute le src de l'image en base64
+            image.alt = fileName.split('.')[0];
+        };
+
+        uploadGroup.style.visibility = 'hidden';
+        reader.readAsDataURL(uploadImageInput.files[0]);
+        uploadContent.appendChild(image);
+    }
+}
+
 // Ouvrir les modales
 if (btnOpenGalleryModal) btnOpenGalleryModal.addEventListener('click', openGalleryModal);
 if (btnOpenProjectModal)
@@ -106,4 +128,9 @@ document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         closeAllModals();
     }
+});
+
+// Quand on veut ajouter une photo
+uploadImageInput.addEventListener('change', function () {
+    uploadImage();
 });
