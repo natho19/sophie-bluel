@@ -31,7 +31,8 @@ if (isConnected()) {
     // Au clic du lien logout, déconnecter l'utilisateur
     logoutLink.addEventListener('click', event => {
         event.preventDefault();
-        // Supprimer le token et rafraîchir la page
+        // Supprimer le userId et le token
+        localStorage.removeItem('userId');
         localStorage.removeItem('token');
         window.location.reload();
     });

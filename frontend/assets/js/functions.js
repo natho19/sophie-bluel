@@ -1,5 +1,9 @@
 'use strict';
 
+function getUserId() {
+    return localStorage.getItem('userId');
+}
+
 function getToken() {
     return localStorage.getItem('token');
 }

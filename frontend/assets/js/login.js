@@ -36,8 +36,7 @@ function postLoginForm(user) {
                 return response.json();
             })
             .then(data => {
-                // Si on récupère le token
-                if (data.token) connecting(data.token);
+                if (data) connecting(data);
             })
             .catch(error => {
                 throw new Error(error);
@@ -61,11 +60,12 @@ function displayError() {
 }
 
 // Connexion de l'utilisateur
-function connecting(token) {
+function connecting(data) {
     // Redirection vers la page d'accueil
     const url = window.location.origin + '/index.html';
     window.location.replace(url);
 
-    // Enregistrement du token
-    localStorage.setItem('token', token);
+    // Enregistrement du userId et du token
+    localStorage.setItem('userId', data.userId);
+    localStorage.setItem('token', data.token);
 }
