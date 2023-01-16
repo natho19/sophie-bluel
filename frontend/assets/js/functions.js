@@ -13,3 +13,15 @@ function isConnected() {
     const connecting = getToken() ? true : false;
     return connecting;
 }
+
+// Affichage du message d'erreur
+function displayMessage(status, info, element) {
+    const message = document.createElement('div');
+    message.classList.add('message', status);
+    message.innerHTML = info;
+
+    const messageEl = document.querySelector('.message');
+
+    // Si la div n'existe pas encore
+    if (messageEl === null) element.parentNode.insertBefore(message, element);
+}

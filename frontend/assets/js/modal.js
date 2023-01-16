@@ -17,6 +17,8 @@ const uploadImageInput = document.querySelector('.upload-file');
 const uploadContent = document.querySelector('#upload-content');
 const uploadGroup = document.querySelector('#upload-group');
 
+const projectFormEl = document.querySelector('#add-project-form');
+
 // Ouverture de la modale galerie
 function openGalleryModal() {
     galleryModal.classList.remove('hidden');
@@ -29,7 +31,10 @@ function openGalleryModal() {
         const id = Number(btnsDelete[i].parentElement.getAttribute('data-id'));
         btnsDelete[i].addEventListener('click', function () {
             // Après confirmation, supprimer le projet
-            if (window.confirm('Voulez-vous vraiment supprimer ce projet ?')) deleteWork(id);
+            if (window.confirm('Voulez-vous vraiment supprimer ce projet ?')) {
+                deleteWork(id);
+                alert('Projet supprimé avec succès');
+            }
         });
     }
 }
@@ -133,4 +138,33 @@ document.addEventListener('keydown', function (e) {
 // Quand on veut ajouter une photo
 uploadImageInput.addEventListener('change', function () {
     uploadImage();
+});
+
+// Soumission du formulaire
+projectFormEl.addEventListener('submit', event => {
+    event.preventDefault();
+
+    loadConfig().then(config => {
+        fetch(config.host + 'api/works', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${getToken()}`,
+            },
+            body: new FormData(projectFormEl),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    displayMessage(
+                        'error',
+                        "&times; Le formulaire n'est pas correctement rempli",
+                        projectFormEl
+                    );
+                } else {
+                    displayMessage('success', '&check; Photo ajoutée avec succès', projectFormEl);
+                }
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+    });
 });

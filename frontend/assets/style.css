@@ -379,12 +379,22 @@ footer nav ul {
     text-decoration: underline;
 }
 
-.section-form .error {
+.message {
     padding: 20px 15px;
     background-color: #feecf0;
-    color: #cc0f35;
     font-weight: 600;
-    margin-top: 40px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.message.error {
+    background-color: #feecf0;
+    color: #cc0f35;
+}
+
+.message.success {
+    background-color: #e5f3fc;
+    color: #006ab1;
 }
 
 #login-form {
