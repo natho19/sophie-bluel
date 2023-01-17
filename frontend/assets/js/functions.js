@@ -23,5 +23,9 @@ function displayMessage(status, info, element) {
     const messageEl = document.querySelector('.message');
 
     // Si la div n'existe pas encore
-    if (messageEl === null) element.parentNode.insertBefore(message, element);
+    if (messageEl === null) {
+        element.parentNode.insertBefore(message, element);
+    } else {
+        messageEl.parentNode.replaceChild(message, messageEl);
+    }
 }

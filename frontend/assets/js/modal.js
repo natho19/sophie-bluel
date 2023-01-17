@@ -33,7 +33,6 @@ function openGalleryModal() {
             // Après confirmation, supprimer le projet
             if (window.confirm('Voulez-vous vraiment supprimer ce projet ?')) {
                 deleteWork(id);
-                alert('Projet supprimé avec succès');
             }
         });
     }
@@ -82,30 +81,13 @@ function deleteWork(id) {
                     elements.forEach(element => {
                         element.remove();
                     });
+                    alert('Projet supprimé avec succès');
                 }
             })
             .catch(error => {
                 throw new Error(error);
             });
     });
-}
-
-// Uploader une image
-function uploadImage() {
-    if (uploadImageInput.files && uploadImageInput.files[0]) {
-        const reader = new FileReader(); // Pour lire le fichier sélectionné
-        const image = new Image();
-        const fileName = uploadImageInput.files[0].name;
-
-        reader.onload = e => {
-            image.src = e.target.result; // Ajoute le src de l'image en base64
-            image.alt = fileName.split('.')[0];
-        };
-
-        uploadGroup.style.visibility = 'hidden';
-        reader.readAsDataURL(uploadImageInput.files[0]);
-        uploadContent.appendChild(image);
-    }
 }
 
 // Ouvrir les modales
@@ -139,6 +121,24 @@ document.addEventListener('keydown', function (e) {
 uploadImageInput.addEventListener('change', function () {
     uploadImage();
 });
+
+// Uploader une image
+function uploadImage() {
+    if (uploadImageInput.files && uploadImageInput.files[0]) {
+        const reader = new FileReader(); // Pour lire le fichier sélectionné
+        const image = new Image();
+        const fileName = uploadImageInput.files[0].name;
+
+        reader.onload = e => {
+            image.src = e.target.result; // Ajoute le src de l'image en base64
+            image.alt = fileName.split('.')[0];
+        };
+
+        uploadGroup.style.visibility = 'hidden';
+        reader.readAsDataURL(uploadImageInput.files[0]);
+        uploadContent.appendChild(image);
+    }
+}
 
 // Soumission du formulaire
 projectFormEl.addEventListener('submit', event => {

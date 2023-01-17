@@ -33,11 +33,7 @@ function postLoginForm(user) {
             .then(response => {
                 // Si l'email ou le mot de passe est incorrect
                 if (!response.ok) {
-                    displayMessage(
-                        'error',
-                        "&times; Erreur dans l'identifiant ou le mot de passe",
-                        loginFormEl
-                    );
+                    displayMessage('error', "&times; Erreur dans l'identifiant ou le mot de passe", loginFormEl);
                     emailInput.focus();
                 } else {
                     return response.json();
