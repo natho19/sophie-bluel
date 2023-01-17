@@ -142,19 +142,23 @@ table {
 }
 
 body {
-    max-width: 1140px;
+    max-width: 1440px;
     margin: auto;
     font-family: 'Work Sans';
     font-size: 14px;
     min-height: calc(100vh - 50px);
-    box-sizing: border-box;
+}
+
+header,
+main {
+    background-color: #fffef8;
 }
 
 header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
     padding-top: 88px;
+    padding-bottom: 50px;
 }
 
 section {
@@ -210,7 +214,7 @@ li:hover {
 }
 
 #introduction {
-    margin: 50px 0;
+    margin-bottom: 50px;
     display: flex;
     align-items: center;
 }
@@ -370,8 +374,7 @@ footer nav ul {
 /** Section form **/
 
 .section-form {
-    margin-top: 180px !important;
-    margin-bottom: 180px !important;
+    padding: 180px 0 !important;
 }
 
 .section-form a {
@@ -413,7 +416,7 @@ footer nav ul {
     position: fixed;
     z-index: 3;
     width: 100%;
-    max-width: 1140px;
+    max-width: 1440px;
 }
 
 .header-top .edition {
