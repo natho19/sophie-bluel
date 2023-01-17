@@ -154,14 +154,15 @@ projectFormEl.addEventListener('submit', event => {
         })
             .then(response => {
                 if (!response.ok) {
-                    displayMessage(
-                        'error',
-                        "&times; Le formulaire n'est pas correctement rempli",
-                        projectFormEl
-                    );
+                    displayMessage('error', "&times; Le formulaire n'est pas correctement rempli", projectFormEl);
                 } else {
                     displayMessage('success', '&check; Photo ajoutée avec succès', projectFormEl);
+                    return response.json();
                 }
+            })
+            .then(data => {
+                displayGalleryWork(data);
+                displayWork(data);
             })
             .catch(error => {
                 throw new Error(error);

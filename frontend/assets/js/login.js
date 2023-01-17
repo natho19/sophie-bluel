@@ -39,8 +39,9 @@ function postLoginForm(user) {
                         loginFormEl
                     );
                     emailInput.focus();
+                } else {
+                    return response.json();
                 }
-                return response.json();
             })
             .then(data => {
                 if (data.userId) connecting(data);
