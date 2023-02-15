@@ -5,6 +5,7 @@ const imgEl = document.querySelector('figure img');
 const introductionTitleEl = document.querySelector('#introduction h2');
 const portfolioTitleEl = document.querySelector('#portfolio h2');
 const logoutLink = document.querySelector('[href="login.html"]');
+const filters = document.querySelector('.filters');
 
 // Si le token est présent, l'utilisateur est connecté
 if (isConnected()) {
@@ -27,6 +28,9 @@ if (isConnected()) {
     // Transformer le lien login en logout
     logoutLink.textContent = 'logout';
     logoutLink.setAttribute('href', '#');
+
+    // Supprimer les filtres
+    filters.remove();
 
     // Au clic du lien logout, déconnecter l'utilisateur
     logoutLink.addEventListener('click', event => {
