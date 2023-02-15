@@ -36,6 +36,8 @@ loadConfig().then(config => {
                     }
                 });
             });
+
+            displayMoveButton();
         })
         .catch(error => {
             throw new Error(error);
@@ -72,4 +74,14 @@ function displayGalleryWork(work) {
         <a href="#">éditer</a>
         <button class="delete"><img src="./assets/icons/trash.png" alt="trash"></button>
     </figure>`;
+}
+
+// Affihce l'icône de déplacement sur le premier projet de la galerie photo
+function displayMoveButton() {
+    const firstFigure = projectsListEl.firstElementChild;
+    const deleteButton = firstFigure.lastElementChild;
+    const moveButton = document.createElement('button');
+    moveButton.classList.add('move');
+    moveButton.innerHTML = `<img src="./assets/icons/move.png" alt="move">`;
+    deleteButton.parentNode.insertBefore(moveButton, deleteButton);
 }

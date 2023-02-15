@@ -537,16 +537,23 @@ html {
     margin-bottom: 5px;
 }
 
-.projects-list .delete {
+.projects-list button {
     position: absolute;
     top: 6px;
-    right: 2px;
     cursor: pointer;
     border: none;
     background: none;
 }
 
-.projects-list .delete img {
+.move {
+    right: 24px;
+}
+
+.delete {
+    right: 2px;
+}
+
+.projects-list button img {
     width: 18px;
 }
 
